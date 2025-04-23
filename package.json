@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "pm2 restart server.js"
+    "start": "pm2 start server.js"
   },
   "dependencies": {
     "express": "^5.1.0",
