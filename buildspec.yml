@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - n 22.14.0
+      - "npm install yarn -g"
+  
+  build:
+    commands:
+      - yarn
+      - npm run build
+  
+  post_build:
+    commands:
+      - ls
+
+artifacts:
+  files:
+    - "**/*"
+  base-directory: '.'
