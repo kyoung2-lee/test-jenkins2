@@ -1,23 +1,6 @@
-# Define the platform variable
-ARG PLATFORM=linux/amd64
+FROM ubuntu:20.04
 
-FROM --platform=${PLATFORM} node:22.14 AS builder
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN yarn install
-
-ADD ./ ./
-
-RUN yarn build
-
-FROM --platform=${PLATFORM} nginx:1.26.3-alpine
-
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-COPY --from=builder /app/nginx /etc/nginx/conf.d
+RUN apt update && apt install -y nginx
 
 WORKDIR /usr/share/nginx/html
 
